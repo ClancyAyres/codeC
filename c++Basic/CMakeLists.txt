@@ -1,0 +1,17 @@
+cmake_minimum_required(VERSION 3.16)
+project(CppBasic VERSION 1.0 LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
+add_subdirectory(module-01-basics)
+add_subdirectory(module-02-memory)
+add_subdirectory(module-03-oop)
+add_subdirectory(module-04-value-semantics)
+add_subdirectory(module-05-stl)
+add_subdirectory(module-06-templates)
+add_subdirectory(module-07-modern-cpp)
+add_subdirectory(module-08-error-handling)
+add_subdirectory(module-09-concurrency)
+add_subdirectory(module-10-project)
