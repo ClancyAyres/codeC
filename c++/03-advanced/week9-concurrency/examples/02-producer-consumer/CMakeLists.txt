@@ -1,0 +1,5 @@
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+find_package(Threads REQUIRED)
+add_executable(example-02-producer-consumer main.cpp)
+target_link_libraries(example-02-producer-consumer Threads::Threads)

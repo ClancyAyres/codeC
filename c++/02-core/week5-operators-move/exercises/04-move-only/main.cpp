@@ -1,0 +1,101 @@
+#include <iostream>
+#include <utility>
+
+class UniqueResource {
+    int* data_ = nullptr;
+    size_t size_ = 0;
+
+public:
+    explicit UniqueResource(size_t n)
+        : data_(new int[n]{}), size_(n) {
+        std::cout << "  Created with size " << size_ << '\n';
+    }
+
+    ~UniqueResource() {
+        delete[] data_;
+    }
+
+    // TODO: 禁止拷贝
+    // UniqueResource(const UniqueResource&) = delete;
+    // UniqueResource& operator=(const UniqueResource&) = delete;
+
+    // TODO: 实现移动构造
+    UniqueResource(UniqueResource&& other) noexcept {
+        // TODO
+    }
+
+    // TODO: 实现移动赋值
+    UniqueResource& operator=(UniqueResource&& other) noexcept {
+        // TODO
+        return *this;
+    }
+
+    size_t size() const { return size_; }
+    bool empty() const { return size_ == 0; }
+
+    // TODO: 实现 operator[]
+    int& operator[](size_t index) {
+        // TODO
+        static int dummy = 0;
+        return dummy;
+    }
+
+    const int& operator[](size_t index) const {
+        // TODO
+        static int dummy = 0;
+        return dummy;
+    }
+
+    // TODO: 实现 swap
+    void swap(UniqueResource& other) noexcept {
+        // TODO
+    }
+
+    // TODO: 实现 release — 放弃所有权，返回指针
+    int* release() noexcept {
+        // TODO
+        return nullptr;
+    }
+};
+
+int main() {
+    std::cout << "=== Create ===\n";
+    UniqueResource res1(5);
+    for (size_t i = 0; i < res1.size(); ++i) {
+        res1[i] = static_cast<int>((i + 1) * 10);
+    }
+
+    std::cout << "\n=== Access via operator[] ===\n";
+    std::cout << "  res1[0] = " << res1[0] << '\n';
+    std::cout << "  res1[4] = " << res1[4] << '\n';
+
+    std::cout << "\n=== Move Constructor ===\n";
+    UniqueResource res2 = std::move(res1);
+    std::cout << "  res1 is empty: " << (res1.empty() ? "true" : "false") << '\n';
+    std::cout << "  res2 size: " << res2.size() << '\n';
+
+    std::cout << "\n=== Move Assignment ===\n";
+    UniqueResource res3(1);
+    res3 = std::move(res2);
+    std::cout << "  res2 is empty: " << (res2.empty() ? "true" : "false") << '\n';
+    std::cout << "  res3 size: " << res3.size() << '\n';
+
+    std::cout << "\n=== Swap ===\n";
+    UniqueResource res4(3);
+    for (size_t i = 0; i < res4.size(); ++i) res4[i] = static_cast<int>(i + 100);
+    std::cout << "  Before: res3 size=" << res3.size() << ", res4 size=" << res4.size() << '\n';
+    res3.swap(res4);
+    std::cout << "  After:  res3 size=" << res3.size() << ", res4 size=" << res4.size() << '\n';
+
+    std::cout << "\n=== Release ===\n";
+    int* raw = res3.release();
+    std::cout << "  res3 is empty: " << (res3.empty() ? "true" : "false") << '\n';
+    std::cout << "  raw[0] = " << raw[0] << ", raw[2] = " << raw[2] << '\n';
+    delete[] raw;
+
+    // 以下代码如果取消注释，应产生编译错误
+    // UniqueResource copy = res4;           // 编译错误：拷贝构造已删除
+    // UniqueResource copy2(1); copy2 = res4; // 编译错误：拷贝赋值已删除
+
+    return 0;
+}
