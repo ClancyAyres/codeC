@@ -31,22 +31,23 @@
 
 ## 整体架构
 
-10 个主题模块（按工作依赖排序） + 1 个综合工作场景。
+11 个主题模块（按工作依赖排序） + 1 个综合工作场景。
 
 ## 模块列表
 
 | 序号 | 模块 | 工作场景 | 核心内容 |
 |------|------|----------|----------|
-| 1 | 基础语法差异 | 第一天上班看代码 | 基本类型(int/long)、引用/指针、const、auto、namespace、默认参数/函数重载、range-for |
-| 2 | 内存管理 | 实现一个功能不出内存问题 | 栈 vs 堆、new/delete、unique_ptr/shared_ptr/weak_ptr、RAII、移动语义、悬垂指针 |
-| 3 | OOP 对比 | 设计/修改一个类 | 构造/析构、继承/虚函数、抽象类、访问控制、多重继承 vs 接口、final/override |
-| 4 | 值语义与运算符 | 写一个可复用的工具类 | 运算符重载、拷贝/移动构造、三五法则、值语义 vs 引用语义 |
-| 5 | STL 容器与算法 | 处理数据集合 | vector/map/set/unordered_map、迭代器、算法(sort/find/transform)、string/string_view |
-| 6 | 模板与泛型 | 写一个通用工具 | 函数模板、类模板、模板特化、变参模板、concepts(C++20) |
-| 7 | 现代 C++ 特性 | 提升代码质量和可读性 | lambda、constexpr、结构化绑定、optional/variant/any、fold expression |
-| 8 | 错误处理 | 让代码在异常情况下健壮 | 异常 vs 错误码、noexcept、RAII 与异常安全 |
-| 9 | 并发编程 | 处理多线程任务 | thread/mutex/lock_guard、atomic、async/future |
-| 10 | 综合工作场景 | 独立完成一个完整需求 | 一个模拟真实任务的 CLI 应用 |
+| 1 | 前置基础 | 理解 C++ 独有的基础概念 | 编译模型(.h/.cpp)、预处理器、基本类型大小、初始化语法、static 三种含义、enum class、类型转换、C 数组 vs std::array、main 签名 |
+| 2 | 基础语法差异 | 第一天上班看代码 | 引用/指针、const、auto、namespace、默认参数/函数重载、range-for |
+| 3 | 内存管理 | 实现一个功能不出内存问题 | 栈 vs 堆、new/delete、unique_ptr/shared_ptr/weak_ptr、RAII、移动语义、悬垂指针 |
+| 4 | OOP 对比 | 设计/修改一个类 | 构造/析构、继承/虚函数、抽象类、访问控制、多重继承 vs 接口、final/override |
+| 5 | 值语义与运算符 | 写一个可复用的工具类 | 运算符重载、拷贝/移动构造、三五法则、值语义 vs 引用语义 |
+| 6 | STL 容器与算法 | 处理数据集合 | vector/map/set/unordered_map、迭代器、算法(sort/find/transform)、string/string_view |
+| 7 | 模板与泛型 | 写一个通用工具 | 函数模板、类模板、模板特化、变参模板、concepts(C++20) |
+| 8 | 现代 C++ 特性 | 提升代码质量和可读性 | lambda、constexpr、结构化绑定、optional/variant/any、fold expression |
+| 9 | 错误处理 | 让代码在异常情况下健壮 | 异常 vs 错误码、noexcept、RAII 与异常安全 |
+| 10 | 并发编程 | 处理多线程任务 | thread/mutex/lock_guard、atomic、async/future |
+| 11 | 综合工作场景 | 独立完成一个完整需求 | 一个模拟真实任务的 CLI 应用 |
 
 ## 模块内部结构
 
